@@ -1,5 +1,6 @@
 import torchaudio
 from speechbrain.pretrained import SpeakerRecognition
+from speechbrain.pretrained import EncoderClassifier
 import streamlit as st
 import torch
 
@@ -8,7 +9,7 @@ def load_sv_model():
     """
     Loads pre-trained speaker verification model from speechbrain
     """
-    verif_model = SpeakerRecognition.from_hparams(source="speechbrain/spkrec-ecapa-voxceleb", savedir="pretrained_models/spkrec-ecapa-voxceleb")
+    verif_model = EncoderClassifier.from_hparams(source="speechbrain/spkrec-ecapa-voxceleb")
     return verif_model
 
 def compare_emeddings(emb1, emb2):

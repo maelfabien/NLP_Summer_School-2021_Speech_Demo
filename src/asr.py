@@ -1,5 +1,6 @@
 from speechbrain.pretrained import EncoderDecoderASR
 import streamlit as st
+import torch
 
 modules = torch.nn.ModuleDict(None)
 
