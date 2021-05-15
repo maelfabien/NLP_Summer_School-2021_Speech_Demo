@@ -8,8 +8,8 @@ from src.asr import *
 from src.nlp import *
 from src.vad import *
 
-st.header("Mexican NLP Summer School")
-#st.subheader("Voice assistant demo")
+st.sidebar.image("ampln.png")
+#st.header("Voice assistant demo")
 
 page = st.sidebar.selectbox("Choose the page", ["Enroll speaker", "Voice assistant"])
 
@@ -20,7 +20,7 @@ topic_model = load_topic_model()
 
 if page == "Enroll speaker":
 
-    st.subheader("Speaker Enrollment")
+    st.header("Speaker Enrollment")
 
     if st.button("Start Recording for 4 seconds"):
         with st.spinner("Recording..."):
@@ -35,14 +35,14 @@ if page == "Enroll speaker":
 
         # Get and save embedding
         emb = get_embedding("temp/temp.wav", verif_model)
-        with open("emb", 'wb') as pickle_file:
+        with open("temp/emb", 'wb') as pickle_file:
             pickle.dump(emb, pickle_file)
 
         st.success("Enrollment complete!")
 
 elif page == "Voice assistant":
     
-    st.subheader("Voice Assistant")
+    st.header("Voice Assistant")
 
     with open("temp/emb", "rb") as f:
         speaker_model = pickle.load(f)
@@ -58,7 +58,7 @@ elif page == "Voice assistant":
         score, decision = run_sv("temp/temp_command.wav", speaker_model, verif_model, 0.1)
 
         if decision:
-            st.success("Access granted, score %s"%int(score*100))
+            st.success("Access granted with a score of %s"%int(score*100))
 
             # Transcript
             transcript = produce_transcript("temp/temp_command.wav", asr_model)
@@ -69,4 +69,4 @@ elif page == "Voice assistant":
             ## DO NLP THERE
 
         else:
-            st.error("Access denied")
+            st.error("Access denied with a score of %s"%int(score*100))
