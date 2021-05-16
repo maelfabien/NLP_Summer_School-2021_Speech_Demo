@@ -2,7 +2,7 @@
 
 ## An introduction to speech-based technologies for Natural Language Processing applications
 
-This repository contains the code for the workshop given at the Mexican NLP Summer School.
+This repository contains the code for the workshop given at the Mexican NLP Summer School. The link to the slides is [here](https://docs.google.com/presentation/d/1bXqvxy0KQnI3AhsncHj_26p1WdE-UKErplUBJ5BBANI/edit?usp=sharing).
 
 ### How to install
 
