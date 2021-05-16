@@ -1,9 +1,11 @@
 .DS_Store
 .ipynb_checkpoints
 .__pycache__
+src/VBx
+src/__pycache__
 /pretrained_checkpoints
 /pretrained_models
-/temp
+temp/*
 src/VBx/models/ResNet101_16kHz/nnet/raw_81.pth
 *.wav
 *.lab

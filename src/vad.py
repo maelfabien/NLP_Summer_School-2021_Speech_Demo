@@ -9,7 +9,7 @@
 # Matthew Maciejewski, Daniel Povey in Kaldi.
 
 import argparse, glob, os.path, shutil
-from src.VBx import features
+from src.utils import *
 import soundfile as sf
 import numpy as np
 import re
@@ -51,14 +51,14 @@ def vad(filename, out_dir, dither_type, dither_value, vad_energy_threshold, vad_
     if samplerate == 8000:
         noverlap = 120   # 10ms * 8 sample/ms shift => 200 - 80 = 120 overlap
         winlen   = 200   # 25ms * 8 sample/ms
-        window   = features.povey_window(winlen)
-        fbank_mx = features.mel_fbank_mx(
+        window   = povey_window(winlen)
+        fbank_mx = mel_fbank_mx(
             winlen, samplerate, NUMCHANS=0, LOFREQ=20.0, HIFREQ=3700, htk_bug=False)
     elif samplerate == 16000:
         noverlap = 240
         winlen   = 400
-        window   = features.povey_window(winlen)
-        fbank_mx = features.mel_fbank_mx(
+        window   = povey_window(winlen)
+        fbank_mx = mel_fbank_mx(
             winlen, samplerate, NUMCHANS=0, LOFREQ=20.0, HIFREQ=7600, htk_bug=False)
     else:
         raise ValueError(f'Only 8kHz and 16kHz are supported. Got {samplerate} instead.')
@@ -68,7 +68,7 @@ def vad(filename, out_dir, dither_type, dither_value, vad_energy_threshold, vad_
 
     # Apply dither
     if ( dither_type == "U" ):
-        signal = features.add_dither(signal.astype(int), int(dither_value) )      
+        signal = add_dither(signal.astype(int), int(dither_value) )      
     elif ( dither_type == "N" ):
         signal += np.random.randn(signal.shape[0])*dither_value
     else:
@@ -79,7 +79,7 @@ def vad(filename, out_dir, dither_type, dither_value, vad_energy_threshold, vad_
                 signal, signal[-1:-winlen // 2 - 1:-1]]
 
     
-    log_energy = features.fbank_htk(signal, window, noverlap, fbank_mx, USEPOWER=True, ZMEANSOURCE=True, _E="first", ENORMALISE=False)
+    log_energy = fbank_htk(signal, window, noverlap, fbank_mx, USEPOWER=True, ZMEANSOURCE=True, _E="first", ENORMALISE=False)
     log_energy = np.squeeze( log_energy )
     
     energy_threshold  = vad_energy_threshold + vad_energy_mean_scale * np.mean(log_energy)

@@ -16,3 +16,8 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## What it does
+
+After enrolling the speaker, it verifies the voice identity of the speaker, runs ASR transcripts, and identifies the topic of your query:
+
+![](pictures/demo.png)

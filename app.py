@@ -2,13 +2,14 @@ import streamlit as st
 import sounddevice as sd
 from scipy.io.wavfile import write
 import pickle
+import os
 
 from src.speaker_verification import *
 from src.asr import *
 from src.nlp import *
 from src.vad import *
 
-st.sidebar.image("ampln.png")
+st.sidebar.image("pictures/ampln.png")
 #st.header("Voice assistant demo")
 
 page = st.sidebar.selectbox("Choose the page", ["Enroll speaker", "Voice assistant"])
@@ -28,6 +29,8 @@ if page == "Enroll speaker":
             # Record user input
             myrecording = sd.rec(4*16000, samplerate=16000, channels=1)
             sd.wait()
+
+        os.system("rm temp/temp.wav")
         write("temp/temp.wav", 16000, myrecording)
 
         # Run VAD
@@ -35,6 +38,7 @@ if page == "Enroll speaker":
 
         # Get and save embedding
         emb = get_embedding("temp/temp.wav", verif_model)
+
         with open("temp/emb", 'wb') as pickle_file:
             pickle.dump(emb, pickle_file)
 
@@ -54,6 +58,7 @@ elif page == "Voice assistant":
             myrecording = sd.rec(4*16000, samplerate=16000, channels=1)
             sd.wait()
 
+        os.system("rm temp/temp_command.wav")
         write("temp/temp_command.wav", 16000, myrecording)
         score, decision = run_sv("temp/temp_command.wav", speaker_model, verif_model, 0.1)
 
