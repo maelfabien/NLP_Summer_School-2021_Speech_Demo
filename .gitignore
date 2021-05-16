@@ -4,3 +4,5 @@
 /pretrained_checkpoints
 /pretrained_models
 /temp
+src/VBx/models/ResNet101_16kHz/nnet/raw_81.pth
+src/VBx/models/ResNet101_8kHz/nnet/raw_195.pth
