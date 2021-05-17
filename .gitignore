@@ -10,3 +10,5 @@ src/VBx/models/ResNet101_16kHz/nnet/raw_81.pth
 *.wav
 *.lab
 src/VBx/models/ResNet101_8kHz/nnet/raw_195.pth
+/pretrained_model
+src/key.txt

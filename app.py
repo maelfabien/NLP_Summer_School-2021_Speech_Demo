@@ -3,11 +3,13 @@ import sounddevice as sd
 from scipy.io.wavfile import write
 import pickle
 import os
+import numpy as np
 
 from src.speaker_verification import *
 from src.asr import *
 from src.nlp import *
 from src.vad import *
+from src.weather import *
 
 st.sidebar.image("pictures/ampln.png")
 #st.header("Voice assistant demo")
@@ -71,8 +73,20 @@ elif page == "Voice assistant":
             st.write("Transcript: ", transcript)
 
             # Detect topic
-            detect_topic(transcript, ["weather forecasts", "calendar and meetings"], "This question is about {}", topic_model)
+            topic = detect_topic(transcript, ["weather forecasts", "calendar and meetings"], "This question is about {}", topic_model)
+            
             ## DO NLP THERE
+
+            if topic == "weather forecasts":
+                city = detect_ner(transcript)
+                current_temperature, weather_description = find_temperature(city)
+
+                if weather_description != "None":
+                    sentence = "The temperature is %s °C with %s"%(np.round(current_temperature, 1), weather_description)
+                    st.write(sentence)
+                else:
+                    st.write("City not found")
+
 
         else:
             st.error("Access denied with a score of %s"%int(score*100))

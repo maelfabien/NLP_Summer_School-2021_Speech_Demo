@@ -5,5 +5,5 @@ import torch
 modules = torch.nn.ModuleDict(None)
 
 def load_asr_model():
-    asr_model = EncoderDecoderASR.from_hparams(source="speechbrain/asr-transformer-transformerlm-librispeech", savedir="pretrained_models/")
+    asr_model = EncoderDecoderASR.from_hparams(source="speechbrain/asr-transformer-transformerlm-librispeech", savedir="pretrained_model/")
     return asr_model

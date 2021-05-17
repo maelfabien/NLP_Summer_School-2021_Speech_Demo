@@ -8,6 +8,7 @@ This repository contains the code for the workshop given at the Mexican NLP Summ
 
 ```bash
 pip install -r requirements.txt
+python -m spacy download en_core_web_sm
 ```
 
 ### How to run the app
