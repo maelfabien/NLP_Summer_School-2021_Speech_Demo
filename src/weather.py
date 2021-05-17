@@ -1,7 +1,8 @@
 import requests, json
+import streamlit as st
 
-with open("key.txt", "r") as f:
-    api_key = f.read_lines()
+with open("src/key.txt", "r") as f:
+    api_key = f.readlines()[0]
     
 def find_temperature(city_name):
 

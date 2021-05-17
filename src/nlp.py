@@ -27,9 +27,9 @@ def detect_ner(text):
     doc = nlp(text)
 
     to_return = []
-    models = [model]
-    visualizers = ["ner"]
-    spacy_streamlit.visualize(models, text, visualizers)
+    #models = [model]
+    #visualizers = ["ner"]
+    #spacy_streamlit.visualize(models, text, visualizers)
     
     for ent in doc.ents:
         if ent.label_ == "GPE":

@@ -78,6 +78,9 @@ elif page == "Voice assistant":
             ## DO NLP THERE
 
             if topic == "weather forecasts":
+
+                st.success("Weather demand detected")
+
                 city = detect_ner(transcript)
                 current_temperature, weather_description = find_temperature(city)
 
