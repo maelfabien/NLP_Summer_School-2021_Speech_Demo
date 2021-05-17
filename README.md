@@ -1,4 +1,4 @@
-# Mexican NLP Summer School
+# Mexican NLP Summer School - Demo
 
 ## An introduction to speech-based technologies for Natural Language Processing applications
 

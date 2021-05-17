@@ -66,7 +66,8 @@ elif page == "Voice assistant":
             st.success("Access granted with a score of %s"%int(score*100))
 
             # Transcript
-            transcript = produce_transcript("temp/temp_command.wav", asr_model)
+            #transcript = produce_transcript("temp/temp_command.wav", asr_model)
+            transcript = asr_model.transcribe_file("temp/temp_command.wav")
             st.write("Transcript: ", transcript)
 
             # Detect topic
