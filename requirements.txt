@@ -2,8 +2,11 @@ torchaudio==0.8.0
 streamlit==0.76.0
 plotly==4.9.0
 sounddevice==0.4.0
-speechbrain==0.5.4
+speechbrain==0.5.7
 transformers==4.4.2
+datasets==1.6.2
 spacy==3.0.5
 scipy==1.4.1
-torch==1.8.1
+torch==1.8.0
+widgetsnbextension==3.5.1
+ipywebrtc==0.6.0
