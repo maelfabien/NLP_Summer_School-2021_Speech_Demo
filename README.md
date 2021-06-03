@@ -15,6 +15,11 @@ pip install spacy-streamlit --pre
 python -m spacy download en_core_web_sm
 ```
 
+### Get your weather forecast API key
+
+You can directly get your key here: https://openweathermap.org/api
+And paste it in `src/key.txt`
+
 ### How to run the app
 
 ```bash
