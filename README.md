@@ -11,6 +11,7 @@ git clone https://github.com/maelfabien/NLP_Summer_School-2021_Speech_Demo
 conda create --name nlp_summer_school python=3.8
 conda activate nlp_summer_school
 pip install -r requirements.txt
+pip install spacy-streamlit --pre
 python -m spacy download en_core_web_sm
 ```
 
