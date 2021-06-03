@@ -1,0 +1,11 @@
+BIT.LY link zu dieser Seite:
+https://bit.ly/weather-api
+
+API Key:
+bd5e378503939ddaee76f12ad7a97608
+
+API Doku:
+http://openweathermap.org/current
+
+How to use an API key:
+http://openweathermap.org/appid#use
