@@ -17,8 +17,7 @@ python -m spacy download en_core_web_sm
 
 ### Get your weather forecast API key
 
-You can directly get your key here: https://openweathermap.org/api
-And paste it in `src/key.txt`
+You can directly get your key here: https://openweathermap.org/api. You need to sign-up, and click on your profile, and "My API Keys". Finally, paste it in `src/key.txt`
 
 ### How to run the app
 
